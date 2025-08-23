@@ -1,0 +1,89 @@
+[
+  {
+    "heading": "PRIVACY POLICY",
+    "content": "",
+    "subheaders": []
+  },
+  {
+    "heading": "Last updated 15 Sep 2023",
+    "content": "At Presight, we are committed to protecting the privacy of our customers and visitors to our website. This Privacy Policy explains how we collect, use, and disclose information about our customers and visitors.",
+    "subheaders": []
+  },
+  {
+    "heading": "Information Collection and Use",
+    "content": "For a better experience, while using our Service, we may require you to provide us with certain personally identifiable information, including but not limited to, your name, phone number, and postal address. The information that we request will be retained by us and used as described in this privacy policy. Our application does use third-party services that may collect information used to identify you.",
+    "subheaders": []
+  },
+  {
+    "heading": "Types of Data Collected",
+    "content": "",
+    "subheaders": [
+      {
+        "Title": "Personal Data",
+        "Content": "While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you. Personally identifiable information may include, but is not limited to: Email address, First name and last name, Phone number, Address, State, Province, ZIP/Postal code, City, Cookies and Usage Data",
+        "List": []
+      },
+      {
+        "Title": "Usage Data",
+        "Content": "We may also collect information that your browser sends whenever you visit our Service or when you access the Service by or through a mobile device. This Usage Data may include information such as your computer Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers, and other diagnostic data.",
+        "List": []
+      }
+    ]
+  },
+  {
+    "heading": "Use of Data",
+    "content": "Presight uses the collected data for various purposes: To provide and maintain our Service To notify you about changes to our Service To allow you to participate in interactive features of our Service when you choose to do so To provide customer support To gather analysis or valuable information so that we can improve our Service To monitor the usage of our Service To detect, prevent and address technical issues",
+    "subheaders": []
+  },
+  {
+    "heading": "Consent",
+    "content": "As personal information is collected, you will be asked to confirm that your information is correct prior to submitting it to Presight.",
+    "subheaders": []
+  },
+  {
+    "heading": "Access to Personal Information",
+    "content": "",
+    "subheaders": [
+      {
+        "Title": "Accessing Your Personal Information",
+        "Content": "You have the right to access all of your personal information that we hold. Through the application, you can correct, amend, or append your personal information by logging into the application and navigating to your settings and profile.",
+        "List": []
+      },
+      {
+        "Title": "Automated Edit Checks",
+        "Content": "Presight employs automated edit checks to ensure that data entry fields are completed properly when collecting personal information. These edit checks help maintain data integrity and accuracy. You are encouraged to provide complete and valid information to ensure the smooth processing of their personal data.",
+        "List": []
+      },
+      {
+        "Title": "Disclosure of Information",
+        "Content": "We may disclose your application data to third-party service providers who help us provide our services such as Datadog, AWS, Google Cloud and Google Workspace. We may also disclose your information in response to a legal request, such as a subpoena or court order, or to protect our rights or the rights of others.",
+        "List": []
+      },
+      {
+        "Title": "Sharing of Personal Data",
+        "Content": "Your personal data will not be subject to sharing, transfer, rental or exchange for the benefit of third parties, including AI models.",
+        "List": []
+      }
+    ]
+  },
+  {
+    "heading": "Google User Data and Google Workspace APIs",
+    "content": "Our use and transfer to any other app of information received from Google APIs will adhere to Google API Services User Data Policy, including the Limited Use requirements.",
+    "subheaders": []
+  },
+  {
+    "heading": "Changes to This Privacy Policy",
+    "content": "We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. We will let you know via email and/or a prominent notice on our Service, prior to the change becoming effective and update the last updated date at the top of this Privacy Policy. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.",
+    "subheaders": []
+  },
+  {
+    "heading": "Contact Us",
+    "content": "If you have any questions about this Privacy Policy, please contact us through the customer portal or by email at presight@presight.io.",
+    "subheaders": []
+  },
+  {
+    "heading": "Purposeful Use Only",
+    "content": "We commit to only use personal information for the purposes identified in the entity privacy policy.",
+    "subheaders": []
+  }
+]
