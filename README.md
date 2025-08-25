@@ -22,12 +22,22 @@ Chat_box_LLM/
 ├── ui_components.py         # Các component giao diện Streamlit
 ├── config.py                # Cấu hình và thiết lập hằng số
 ├── indexed_list.json        # Dữ liệu chính sách đã xử lý và đánh index
-├── notebooks/               # Jupyter notebooks cho phân tích và test
+├── main.ipynb               # Crawl dữ liệu, làm sạch, phân tích và test
 ├── requirements.txt         # Các package Python cần thiết
 └── README.md               # Tài liệu dự án
 ```
 
 ## Mô tả chi tiết từng file
+
+### File xử lý dữ liệu
+
+**`main.ipynb`**
+- Jupyter notebook chính để crawl dữ liệu từ website
+- Web scraping từ https://www.presight.io/privacy-policy.html
+- Xử lý và làm sạch HTML content thành text có cấu trúc
+- Tạo embeddings và phân tích dữ liệu
+- Export kết quả xử lý vào indexed_list.json
+- Test và đánh giá chất lượng RAG system
 
 ### Các file ứng dụng chính
 
@@ -36,74 +46,35 @@ Chat_box_LLM/
 - Điều phối toàn bộ workflow của chatbot
 - Khởi tạo hệ thống RAG và các component UI
 - Xử lý input từ người dùng và hiển thị kết quả
-- Quản lý session state và luồng hoạt động của ứng dụng
 
 **`rag_system.py`** 
-- Triển khai pipeline RAG (Retrieval-Augmented Generation) hoàn chỉnh
-- Load và xử lý dữ liệu chính sách bảo mật đã được index
-- Thực hiện text embedding sử dụng Sentence Transformers (all-MiniLM-L6-v2)
+- Triển khai pipeline RAG hoàn chỉnh
+- Text embedding sử dụng Sentence Transformers (all-MiniLM-L6-v2)
 - Tìm kiếm similarity để lấy các phần nội dung liên quan
 - Tích hợp với Google Gemini API để sinh ngôn ngữ tự nhiên
-- Quản lý việc xây dựng context và tạo câu trả lời từ documents
 
 **`ui_components.py`**
-- Chứa tất cả các component UI và styling functions của Streamlit
-- Triển khai CSS tùy chỉnh cho giao diện chat chuyên nghiệp
-- Quản lý hiển thị tin nhắn với style khác nhau cho user/bot
-- Tạo sidebar với controls, thống kê và các câu hỏi mẫu
-- Xử lý khởi tạo và quản lý session state
-- Cung cấp tính năng export/import lịch sử chat
-- Render welcome screen, form input và hiển thị phản hồi
+- Các component UI và styling functions của Streamlit
+- CSS tùy chỉnh cho giao diện chat chuyên nghiệp
+- Quản lý hiển thị tin nhắn và sidebar controls
+- Tính năng export/import lịch sử chat
 
 **`config.py`**
-- File cấu hình trung tâm cho tất cả thiết lập hệ thống
-- Chứa API keys và cấu hình models
-- Định nghĩa các tham số RAG (giá trị top-k, ngưỡng similarity)
-- Thiết lập tham số hiển thị UI (độ dài preview, giới hạn tin nhắn)
-- Lưu trữ các câu hỏi mẫu và metadata ứng dụng
-- Quản lý đường dẫn files và tên models
-
-### Dữ liệu và tài liệu
+- File cấu hình trung tâm cho toàn bộ hệ thống
+- API keys và cấu hình models
+- Các tham số RAG và UI settings
 
 **`indexed_list.json`**
-- Dữ liệu chính sách bảo mật đã được xử lý và cấu trúc hóa
-- Chứa các sections, headings và nội dung từ privacy policy của Presight
-- Bao gồm metadata để thực hiện retrieval hiệu quả
-- Có thể lưu trữ pre-computed embeddings để tìm kiếm nhanh hơn
-- Format cấu trúc được tối ưu cho việc sử dụng trong hệ thống RAG
-
-**`notebooks/`**
-- Các Jupyter notebooks phục vụ phát triển và phân tích
-- Notebooks xử lý và khám phá dữ liệu
-- Scripts test và đánh giá models
-- Phân tích hiệu suất hệ thống RAG
-- Các tính năng thử nghiệm và cải tiến
-
-## Triển khai kỹ thuật
-
-### Quy trình crawl dữ liệu
-Hệ thống trích xuất nội dung từ https://www.presight.io/privacy-policy.html, phân tích cấu trúc HTML để xác định các sections chính sách, headings và nội dung text liên quan.
-
-### Pipeline RAG
-1. **Embedding**: Nội dung text được chuyển đổi thành vectors 384 chiều sử dụng all-MiniLM-L6-v2
-2. **Retrieval**: Tìm kiếm cosine similarity để tìm các sections chính sách liên quan nhất
-3. **Context Building**: Tập hợp top-K sections liên quan thành context mạch lạc
-4. **Generation**: Google Gemini xử lý context và query của user để tạo response
-
-### Giao diện người dùng
-Ứng dụng web dựa trên Streamlit cung cấp:
-- Giao diện chat real-time với lịch sử hội thoại
-- Các tham số retrieval có thể cấu hình (top-k sections)
-- Câu hỏi mẫu để test nhanh
-- Hiển thị các sections liên quan với similarity scores
-- Tính năng export chat và thống kê hệ thống
+- Dữ liệu privacy policy đã xử lý từ main.ipynb
+- Cấu trúc sections, headings và nội dung
+- Format tối ưu cho hệ thống RAG
 
 ## Cài đặt và sử dụng
 
 ### Yêu cầu hệ thống
 - Python 3.8+
 - Google Gemini API key
-- Kết nối Internet để download models lần đầu
+- Jupyter Notebook
 
 ### Thiết lập
 ```bash
@@ -113,40 +84,36 @@ pip install -r requirements.txt
 ```
 
 ### Cấu hình
-Chỉnh sửa `config.py` với Google Gemini API key của bạn:
+Chỉnh sửa `config.py`:
 ```python
 GOOGLE_API_KEY = "your-api-key-here"
 GENERATION_MODEL_NAME = "gemini-1.5-flash-8b-latest"
 ```
 
-### Chạy ứng dụng
-```bash
-streamlit run app.py
-```
-
-Truy cập chatbot tại http://localhost:8501
+### Chạy hệ thống
+1. **Xử lý dữ liệu**: Chạy `main.ipynb` để crawl và tạo indexed_list.json
+2. **Chạy chatbot**: `streamlit run app.py`
+3. **Truy cập**: http://localhost:8501
 
 ## Tính năng chính
 
-- **Tìm kiếm ngữ nghĩa**: Tìm các sections chính sách liên quan sử dụng NLP embeddings tiên tiến
-- **Phản hồi có ngữ cảnh**: Tạo câu trả lời dựa trên nội dung chính sách bảo mật cụ thể
-- **Giao diện tương tác**: UI chat hiện đại với phản hồi real-time
-- **Retrieval có thể cấu hình**: Tham số độ liên quan có thể điều chỉnh
-- **Minh bạch nội dung**: Hiển thị các sections nguồn được sử dụng cho mỗi phản hồi
-- **Khả năng Export**: Lưu lịch sử hội thoại để phân tích
+- **Tìm kiếm ngữ nghĩa**: NLP embeddings để tìm sections liên quan
+- **Phản hồi có ngữ cảnh**: Câu trả lời dựa trên nội dung thực tế
+- **Giao diện tương tác**: Chat UI hiện đại với real-time responses
+- **Minh bạch nguồn**: Hiển thị sections nguồn với similarity scores
+- **Export capability**: Lưu lịch sử hội thoại
 
 ## Stack công nghệ
 
 - **Frontend**: Streamlit với CSS tùy chỉnh
 - **Backend**: Python với sentence-transformers và google-generativeai
-- **Embedding Model**: all-MiniLM-L6-v2 (384 dimensions)
-- **Generation Model**: Google Gemini 1.5 Flash 8B Latest
-- **Xử lý dữ liệu**: Lưu trữ cấu trúc dựa trên JSON
-- **Similarity Metric**: Cosine similarity cho document retrieval
+- **Models**: all-MiniLM-L6-v2 embeddings + Gemini 1.5 Flash 8B Latest
+- **Storage**: JSON-based structured data
 
 ## Hiệu suất
 
-- Thời gian phản hồi trung bình: 1-2 giây
-- Tạo embedding: ~100ms mỗi query
-- Retrieval context: ~50ms cho top-5 sections
-- Tạo answer: 0.5-1 giây qua Gemini API
+- Thời gian phản hồi: 1-2 giây
+- Embedding generation: ~100ms per query
+- Context retrieval: ~50ms cho top-5 sections
+- Answer generation: 0.5-1 giây via Gemini API
+
